@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.2.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.external-png-1.4.2.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.icons-1.4.2.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.inline-png-1.4.2.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.inline-svg-1.4.2.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.structure-1.4.2.min.css">
+        <link rel="stylesheet" href="css/jquery.mobile.theme-1.4.2.min.css">
+
+        <script src="js/jquery-1.11.0.min.js"></script>
+        <script src="js/jquery.mobile-1.4.2.min.js"></script>
+       
+        <script type="text/javascript" charset="utf-8">
+    
+        var db = openDatabase("localmydb", "1.0", "local myDB", 10000000);
+        db.transaction(    
+			     function create(tx) 
+                          {
+                                    
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS CLASSE (idclasse unique, libelle TEXT)');			     
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS ENSEIGNANT (idenseignant unique, nom TEXT, prenom TEXT, num_tel TEXT, num_cin TEXT, e_mail TEXT)');			     
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS MATIERE (idmatiere unique, libelle TEXT)');			    
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS COUR ( classe_idclasse INTEGER, matiere_idmatiere INTEGER, enseignant_idenseignant INTEGER, date TEXT, salle TEXT, FOREIGN KEY (classe_idclasse) REFERENCES CLASSE (idclasse),  FOREIGN KEY (matiere_idmatiere) REFERENCES MATIERE (idmatiere), FOREIGN KEY (enseignant_idenseignant) REFERENCE ENSEIGNANT (idenseignant))');			    
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS SEANCE (cour_classe_idclasse INTEGER,cour_matiere_idmatiere INTEGER, date DATETIME, sale TEXT, departement TEXT,FOREIGN KEY (cour_classe_idclasse) REFERENCES CLASSE (idclasse),  FOREIGN KEY (cour_matiere_idmatiere) REFERENCES MATIERE (idmatiere))');                          
+                             tx.executeSql('CREATE TABLE IF NOT EXISTS ETUDIANT (idetudiant INTEGER PRIMARY KEY AUTOINCREMENT,cour_classe_idclasse INTEGER,nom TEXT, prenom TEXT, num_tel TEXT, num_cin TEXT, e_mail TEXT, FOREIGN KEY (cour_classe_idclasse) REFERENCES CLASSE(idclasse))');			    
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS ABSENCE (idabsence INTEGER PRIMARY KEY AUTOINCREMENT,etudiant_idetudiant INTEGER ,date DATETIME, FOREIGN KEY (etudiant_idetudiant) REFERENCES ETUDIANT(idetudiant) )');			    
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS COMPORTEMENT (idcomportement unique, libelle TEXT, date DATETIME,etudiant_idetudiant INTEGER, FOREIGN KEY (etudiant_idetudiant) REFERENCES ETUDIANT(idetudiant) )');			    
+			     tx.executeSql('CREATE TABLE IF NOT EXISTS NOTE (idnote unique, libelle TEXT, type TEXT, date DATETIME,etudiant_idetudiant INTEGER, FOREIGN KEY (etudiant_idetudiant) REFERENCES ETUDIANT(idetudiant) )');
+                          }
+                    );
+			             
+        </script>
+    </head>
+    <body>
+
+        <div data-role= "page" id="main"  data-theme="a">
+
+            <div data-role= "header"  style="text-align: left;">
+                <h1>Mes classes</h1>
+                <a href="#add" data-icon="plus" data-rel= "dialog"  data-trasition= "pop" data-mini= "true">Ajouter classe</a>
+                <a href="#option" data-icon="gear" data-iconpos="notext" >option</a>
+
+            </div>	
+            <div data-role= "content">
+                <p>  Ici se trouvent vos classes ajoutés</p>
+                <p> <select name="list_classe">
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                        <option></option>
+                    </select> </p>
+            </div>
+        </div>
+        <div data-role= "page" id="add" >
+            <div data-role= "header" data-theme= "b">
+                <h4>Nouvelle classe</h4>
+            </div>	
+            <div data-role= "content" data-theme= "d">
+
+                <label for="className" class="ui-hidden-accessible">Nom du classe:</label>
+                <input type="text" name="textinput-hide" id="className" placeholder="Nom du classe:" value="">
+                <center>
+                    <input id="addClass" type="button" value="Valider" data-inline="true" />
+                    <input type="button" value="Annuler" data-inline="true" />
+                </center>
+                <div id="msgClass">my div</div>
+            </div>	
+        </div>
+
+        <div data-role= "page" id="option" >
+            <div data-role= "header" data-theme= "b">
+                <h4>Parametres</h4>
+                <a href="#" data-rel="back" data-icon="back" data-iconpos="notext">retour</a>
+            </div>	
+            <div data-role= "content" data-theme= "d">
+                
+                     <h4>Vos options</h4> <br />
+                     <h4>Vos options</h4> <br />
+                     <h4>Vos options</h4> <br />
+                     <h4>Vos options</h4> <br />
+                     <h4>Vos options</h4> <br />
+                
+                <button>Valider</button>
+            </div>	
+        </div>
+        <script type="text/javascript" charset="utf-8">
+           
+  
+           
+            function add_class()
+            {
+	 var x = document.getElementById(textinput-hide).value ;
+	
+	
+     
+	 
+	 db.transaction(function (ty) {  
+
+	   ty.executeSql('INSERT INTO CLASSElol
+	                         (libelle) VALUES (x)'),;
+	 });
+
+                alert("lol");
+            }
+        </script>
+    </body>
+</html>
