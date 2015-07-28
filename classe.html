@@ -1,0 +1,152 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<title>Ma Classe</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	
+	
+	<link rel="stylesheet" href="jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.css">
+	
+	<link rel="stylesheet" href="/jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.inline-svg.css">
+	
+	<link rel="stylesheet" href="jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.structure.css">
+	
+	<link rel="stylesheet" href="jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.inline-png.css">
+	
+	<link rel="stylesheet" href="jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.icons.css">
+	
+	<link rel="stylesheet" href="jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.external-png.css">
+	
+	<link rel="stylesheet" href="jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.theme.css">
+	
+	
+	<script src="jquery-mobile/images/icons-png/jquery/jquery.js"></script>
+	<script src="jquery-mobile/images/icons-png/jquery-mobile/jquery.mobile.js"></script>
+</head> 
+<body>
+
+<div data-role= "page" id="main" >
+
+	<div data-role= "header"  style="text-align: left;">
+	<h1>Ma Classe</h1>
+	<a href="#new" data-icon="plus" data-rel= "dialog"  data-trasition= "pop" data-mini= "true" class="ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-plus">Ajouter un etudiant</a>
+	</div>	
+
+	<div data-role= "content">
+	
+	<div data-role="tabs" id="tabs">
+	  <div data-role="navbar">
+	    <ul>
+	      <li><a href="#one" data-ajax="false">Presence</a></li>
+	      <li><a href="#two" data-ajax="false">Comportement</a></li>
+	      <li><a href="#three" data-ajax="false">Notes</a></li>
+	    </ul>
+	  </div>
+	  <div id="one" class="ui-body-d ui-content">
+              <center>
+                  <h1>Interface du presence</h1></center>
+	  </div>
+
+	  <div id="two" >
+	  <h1></h1>
+	  </div>
+	  
+	  <div id="three">
+	  <table data-role="table" id="table-column-toggle" data-mode="columntoggle" class="ui-responsive table-stroke">
+	       <thead>
+	         <tr>
+	           <th data-priority="3">Rang</th>
+	           <th data-priority="2">Nom et prenom</th>
+	           <th data-priority="4"><abbr title="Devoir Surveillé">DS</abbr></th>
+	           <th data-priority="5">Examen</th>
+	           <th data-priority="1">moyenne</th>
+	         </tr>
+	       </thead>
+	       <tbody>
+	         <tr>
+	           <th>1</th>
+	           <td>premier etudiant</td>
+	           <td>18</td>
+	           <td>10</td>
+	           <td>74</td>
+	         </tr>
+	         <tr>
+	           <th>2</th>
+	           <td>deuxieme etudiant</td>
+	           <td>19</td>
+	           <td>4</td>
+	           <td>7</td>
+	         </tr>
+	         <tr>
+	           <th>3</th>
+	           <td>troisieme etudiant</td>
+	           <td>14</td>
+	           <td>17</td>
+	           <td>15.5</td>
+	         </tr>
+	        	       </tbody>
+	     </table>
+	  	  </div>
+
+	</div>
+	
+		</div>	
+
+	<!--<div data-role= "footer">
+	<h4>Footer</h4>
+	</div>-->
+
+</div>
+
+
+
+
+<div data-role= "page" id="new" >
+
+	<div data-role= "header" data-theme= "b">
+	<h4>Nouvel etudiant</h4>
+<!--	<span class="ui-title"></span>-->
+	</div>	
+
+	<div data-role= "content" data-theme= "d">
+	
+	<form method="post" action="">
+	
+	
+	<label for="textinput-hide" class="ui-hidden-accessible">Nom etudiant:</label>
+	<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Nom etudiant:" value="">	
+	
+	<label for="textinput-hide" class="ui-hidden-accessible">Prenom etudiant:</label>
+	<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Prenom etudiant:" value="">	
+	
+	<label for="textinput-hide" class="ui-hidden-accessible">Date naissance:</label>
+	<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Date de naissance,jj/mm/aaaa :" value="">	
+	
+	<label for="textinput-hide" class="ui-hidden-accessible">Email:</label>
+	<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Email:" value="">
+	
+	<label for="textinput-hide" class="ui-hidden-accessible">Num tel:</label>
+	<input type="text" name="textinput-hide" id="textinput-hide" placeholder="Numero tel:" value="">	
+		
+	
+	
+	
+	
+	<center><input type="submit" value="Valider" data-inline="true"></input>
+	<input type="reset" value="Annuler" data-inline="true"></input></center>
+	
+	</form>
+	</div>	
+
+	<!--<div data-role= "footer">
+	<p><h4>Footer</h4></p>
+	</div>-->
+</div>
+
+
+
+	
+	
+</body>
+</html>
